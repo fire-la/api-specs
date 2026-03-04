@@ -10,6 +10,18 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/generated/sdk.gen.d.ts",
+      "import": "./dist/generated/sdk.gen.js",
+      "default": "./dist/generated/sdk.gen.js"
+    }
+  },
   "scripts": {
     "generate": "openapi-ts",
     "build": "tsc",
