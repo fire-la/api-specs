@@ -2,6 +2,12 @@
   "name": "@firela/api-types",
   "version": "0.0.0",
   "description": "TypeScript types generated from OpenAPI specifications",
+  "license": "MIT",
+  "author": "FireLa Team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fire-la/api-specs"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
