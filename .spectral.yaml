@@ -1,0 +1,17 @@
+extends: ["spectral:oas"]
+rules:
+  operation-description-required:
+    description: Operations must have descriptions
+    given: $.paths[*][*]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  operation-operationId:
+    description: All operations must have operationId
+    given: $.paths[*][*]
+    severity: error
+    then:
+      field: operationId
+      function: truthy

@@ -1,0 +1,23 @@
+{
+  "name": "@firela/api-types",
+  "version": "0.0.0",
+  "description": "TypeScript types generated from OpenAPI specifications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "generate": "openapi-ts",
+    "build": "tsc",
+    "lint": "spectral lint openapi.yaml",
+    "prepublishOnly": "npm run generate && npm run build"
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@hey-api/client-fetch": "^0.4.0",
+    "@hey-api/openapi-ts": "^0.45.0",
+    "@stoplight/spectral-cli": "^6.11.0",
+    "typescript": "^5.3.0"
+  }
+}

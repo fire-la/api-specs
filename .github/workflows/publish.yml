@@ -1,0 +1,41 @@
+name: Publish to npm
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate types
+        run: npm run generate
+
+      - name: Build
+        run: npm run build
+
+      - name: Set canary version
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          npm version 0.0.0-canary.$SHORT_SHA --no-git-tag-version
+
+      - name: Publish to npm (canary)
+        run: npm publish --tag canary --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

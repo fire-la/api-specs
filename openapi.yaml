@@ -1,0 +1,30 @@
+openapi: 3.0.3
+info:
+  title: IGN API
+  description: IGN Beancount SaaS API
+  version: 1.0.0
+  contact:
+    name: Firela Team
+
+servers:
+  - url: http://localhost:3333/api/v1
+    description: Local development
+  - url: https://staging.ign.dev/api/v1
+    description: Staging
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      operationId: getHealth
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
