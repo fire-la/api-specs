@@ -989,8 +989,10 @@ components:
           type: string
           format: date
         flag:
-          $ref: '#/components/schemas/TransactionFlag'
+          type: string
+          enum: ["*", "!"]
           default: "*"
+          description: "Transaction flag: '*' = complete, '!' = incomplete"
         payee:
           type: string
         narration:
